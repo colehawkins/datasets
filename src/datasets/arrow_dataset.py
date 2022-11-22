@@ -312,6 +312,9 @@ class TensorflowDatasetMixin:
             elif np_arrays[0].dtype.kind == "U":  # Unicode strings
                 np_dtype = np.unicode_
                 tf_dtype = tf.string
+            elif np_arrays[0].dtype.kind == "S":  # Byte strings
+                np_dtype = np.bytes_
+                tf_dtype = tf.string
             else:
                 raise RuntimeError(
                     f"Unrecognized array dtype {np_arrays[0].dtype}. \n"
