@@ -485,6 +485,7 @@ class TensorflowDatasetMixin:
                 inp=[indices],
                 # This works because dictionaries always output in the same order
                 Tout=[tf.dtypes.as_dtype(dtype) for dtype in columns_to_np_types.values()],
+                stateful=False
             )
             return {key: output[i] for i, key in enumerate(columns_to_np_types.keys())}
 
